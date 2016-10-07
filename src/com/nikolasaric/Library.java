@@ -1,21 +1,55 @@
 package com.nikolasaric;
 
-//Collects informations about books and prints them out.
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Library {
+	public static Scanner userInput = new Scanner(System.in);
 
-	
-	public static void main(String[] args) {
-		Books newBooks = new Books();
+	List<Book> books = new ArrayList<Book>();
 
-		
-		if(newBooks.getId() == 0) {
-			System.out.println("Invalid Id.");
-		}else {
-		System.out.println("Inserted Id is " + newBooks.getId());
-		System.out.println(newBooks.getAuthor());
-		System.out.println("Number of pages: " + newBooks.getNumOfPages());
-		System.out.println("Price is " + newBooks.getPrice() + "$");
-		
-		}
+	public void addBook(Book book) {
+
+		int size = books.size();
+		// System.out.println("Unesi Id");
+		long newId = size++;
+
+		System.out.println("Unesi naziv knjige");
+		String newTitle = userInput.next();
+
+		System.out.println("Unesi autora");
+		String newAuthor = userInput.next();
+
+		System.out.println("Unesi kad je izdata");
+		int newPublishedOn = userInput.nextInt();
+
+		System.out.println("Unesi broj strana");
+		int newNumberOfPages = userInput.nextInt();
+
+		// public Book(long id, String title, String author, int publishedOn,
+		// int numberOfPages)
+		Book newBook = new Book(newId, newTitle, newAuthor, newPublishedOn, newNumberOfPages);
+		books.add(newBook);
+
+		// Test
+
+		System.out.println("Id of this book is:" + newId);
 	}
+
+	public void deleteBook(int newId) {
+
+		System.out.println("Unesite Id knjige koju zelite da obrisete.");
+		int deleteById = userInput.nextInt();
+
+		books.remove(deleteById);
+
+	}
+	
+	public void showList() {
+		
+		System.out.println(Arrays.toString(books.toArray()));
+	}
+
 }
