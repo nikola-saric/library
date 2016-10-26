@@ -1,34 +1,44 @@
 package com.nikolasaric;
 
-import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Library {
-	public static Scanner someInput = new Scanner(System.in);
 
-	List<Book> books = new ArrayList<Book>();
+	private List<Book> books = new ArrayList<Book>();
 
 	public void addBook(Book book) {
 
 		books.add(book);
 
-		someInput.nextLine();
 	}
 
-	public void deleteBook(Book book) {
+	public void deleteBook(String title) {
+		Book foundBook = searchBook(title);
 
-		books.remove(book);
+		if (foundBook != null) {
+			books.remove(foundBook);
 
-		someInput.nextLine();
+		}
+
 	}
 
-	public void getBook() {
-		books.forEach(System.out::println);
-		
-		someInput.nextLine();
+	public Book searchBook(String titleOfBookToSearch) {
 
+		for (Book book : books) {
+
+			if (book.getBookTitle().equalsIgnoreCase(titleOfBookToSearch)) {
+
+				return book;
+			} else {
+				return null;
+			}
+		}
+		return null;
+	}
+
+	public List<Book> getAllBooks() {
+		return books;
 	}
 
 }
