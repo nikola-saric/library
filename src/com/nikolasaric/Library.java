@@ -30,8 +30,6 @@ public class Library {
 			if (book.getBookTitle().equalsIgnoreCase(titleOfBookToSearch)) {
 
 				return book;
-			} else {
-				return null;
 			}
 		}
 		return null;

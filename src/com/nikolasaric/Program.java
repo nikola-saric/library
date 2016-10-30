@@ -65,9 +65,9 @@ public class Program {
 				library.deleteBook(titleOfBookToDelete);
 
 				break;
-				
+
 			case 4:
-				
+
 				System.out.println("Enter book name:");
 
 				String titleOfBookToSearch = userInput.next();
@@ -86,11 +86,11 @@ public class Program {
 				break;
 
 			case 5:
-				
+
 				System.exit(0);
 
 				break;
-				
+
 			default:
 				System.out.println("You chose an invalid option, try again.");
 			}

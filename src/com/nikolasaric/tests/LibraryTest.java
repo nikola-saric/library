@@ -19,7 +19,7 @@ public class LibraryTest {
 		Book book = new Book("dasd", 14, "dsd", 434, 43);
 		library.addBook(book);
 		Assert.assertTrue(!library.getAllBooks().isEmpty());
-		Assert.assertEquals("dasd", book.getBookTitle());
+		Assert.assertEquals(book, books.get(0));
 	}
 
 	@Test
@@ -28,12 +28,8 @@ public class LibraryTest {
 		List<Book> books = library.getAllBooks();
 		Assert.assertTrue(books.isEmpty());
 		Book book = new Book("dasd", 14, "dsd", 434, 43);
-		library.addBook(book);
+		books.add(book);
 		Assert.assertTrue(!library.getAllBooks().isEmpty());
-		Assert.assertEquals("dasd", book.getBookTitle());
-		library.deleteBook(null);
-		Assert.assertTrue(!library.getAllBooks().isEmpty());
-		Assert.assertEquals("dasd", book.getBookTitle());
 		library.deleteBook("dasd");
 		Assert.assertTrue(library.getAllBooks().isEmpty());
 	}
@@ -44,9 +40,11 @@ public class LibraryTest {
 		List<Book> books = library.getAllBooks();
 		Assert.assertTrue(books.isEmpty());
 		Book book = new Book("dasd", 14, "dsd", 434, 43);
-		library.addBook(book);
+		Book book2 = new Book("newBook", 15, "ada", 321, 33);
+		books.add(book);
+		books.add(book2);
 		Assert.assertTrue(!library.getAllBooks().isEmpty());
-		Assert.assertEquals(book.getBookTitle(), "dasd");
+		Assert.assertEquals(book2, library.searchBook("newBook"));
 
 	}
 }
